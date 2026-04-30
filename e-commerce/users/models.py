@@ -1,6 +1,6 @@
 from django.db import models
-from products import product
-
+from products import product    
+from django.contrib.auth.models import User
 # Create your models here.
 class User(models.Model):
     LIVE = 1
@@ -8,8 +8,8 @@ class User(models.Model):
     DELETE_CHOICES = ( (LIVE, 'Live'), (DELETE, 'Delete') )
     name = models.CharField(max_length=255)
     address = models.TextField()
-    user = models.OneToOneField(US)
-    password = models.CharField(max_length=255)
+    user = models.OneToOneField(User    ,on_delete = models.CASCADE ,related_name='profile')
+    phone= models.CharField(max_length=10)
     delete_status = models.IntegerField(choices=DELETE_CHOICES, default=LIVE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

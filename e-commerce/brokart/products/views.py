@@ -4,11 +4,13 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
-def product(request):
+def list_product(request):
     return render(request, 'products.html')
 
 def product_details(request):
     return render(request, 'product_details.html')
+
+
 
 
 def account(request):

@@ -14,14 +14,12 @@ def list_product(request):
 def product_details(request):
     return render(request, 'product_details.html')
 
-
-
-
-
-
-
-def account(request):
-    return render(request, 'account.html')
-
 def cart(request):
     return render(request, 'cart.html')
+
+
+
+
+
+
+

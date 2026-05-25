@@ -10,12 +10,6 @@ urlpatterns = [
 
 
 
+
     
-    path('account/', views.account, name='account'),
-
-
-
-
-
-    path('cart/', views.cart, name='cart'),
 ]

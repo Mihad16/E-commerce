@@ -1,6 +1,9 @@
 {% load static %}
+{% load row_split %}
+from django.shortcuts import render
 <div class="small-container">
         <div class="row row-2">
+
             <h2>All Products</h2>
             <select>
                 <option>Default Sort</option>
@@ -9,8 +12,16 @@
                 <option>Sort By Rating</option>
                 <option>Sort By Sale</option>
             </select>
+           
+
         </div>
+       
+                {% for product in product_row %}
+                {% for product in product_row %}
         <div class="row">
+            {% for product in product_row %}
+            {% endfor %}
+
             <div class="col-4">
                 <a href="{% url 'product_details' %}"><img src="{% static 'images/product-1.jpg'%}"></a>
                 <h4>Red Printed T-Shirt</h4>
@@ -23,8 +34,8 @@
                 </div>
                 <p>$50.00</p>
             </div>
-            <div class="col-4">
-                <img src="{% static 'images/product-2.jpg'%}">
+                         <img src="{% static 'images/product-2.jpg'%}">
+
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>

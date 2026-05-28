@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Product
 
 # Create your views here.
 def index(request):
@@ -12,10 +13,14 @@ def list_product(request):
 
 
 def product_details(request):
-    return render(request, 'product_details.html')
+    product_list=Product.objects.all()
+    context={
+        'products': product_list
+    }
+    
+    return render(request, 'product_details.html',context)
 
-def cart(request):
-    return render(request, 'cart.html')
+
 
 
 

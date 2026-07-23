@@ -2,6 +2,7 @@
 {% load row_split %}
 
 <div class="small-container">
+
     <div class="row row-2">
         <h2>All Products</h2>
 
@@ -14,17 +15,18 @@
         </select>
     </div>
 
-
-
+    {% for product_row in products|row_split:4 %}
     <div class="row">
-        {%for product_row in products|row_split:4 %}
-        {% for product in product_row %}
 
+        {% for product in product_row %}
         <div class="col-4">
-            <a href="{% url 'product_details' %}">
-                <img src=" {{ product.image.url }}">    
+
+            <a href="{% url 'product_details'%}">
+                <img src="{{ product.image.url }}" alt="{{ product.title }}">
             </a>
+
             <h4>{{ product.title }}</h4>
+
             <div class="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -32,13 +34,28 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
             </div>
-            <p>{{ product.price }}</p>
-        </div>
-        
-        
 
-      
-{% endfor %}
-{% endfor %}
+            <p>₹{{ product.price }}</p>
+
+        </div>
+        {% endfor %}
+
     </div>
+    {% endfor %}
+
+    <div class="page-btn">
+        {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}"><span>«</span></a>
+        {% endif %}
+        {% for page_num in products.paginator.page_range %}
+            <a href="?page={{ page_num }}"><span>{{ page_num }}</span></a>
+        {% endfor %}
+        {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}"><span>»</span></a>
+        {% endif %}
+    
+        
+        
+    </div>
+
 </div>

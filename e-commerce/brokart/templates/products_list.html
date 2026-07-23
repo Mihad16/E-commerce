@@ -1,4 +1,5 @@
 {% load static %}
+{% load row_split %}
 
 <div class="small-container">
     <div class="row row-2">
@@ -13,13 +14,17 @@
         </select>
     </div>
 
+
+
     <div class="row">
+        {%for product_row in products|row_split:4 %}
+        {% for product in product_row %}
 
         <div class="col-4">
             <a href="{% url 'product_details' %}">
-                <img src="{% static 'images/product-1.jpg' %}">
+                <img src=" {{ product.image.url }}">    
             </a>
-            <h4>Red Printed T-Shirt</h4>
+            <h4>{{ product.title }}</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -27,47 +32,13 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
             </div>
-            <p>$50.00</p>
+            <p>{{ product.price }}</p>
         </div>
+        
+        
 
-        <div class="col-4">
-            <img src="{% static 'images/product-2.jpg' %}">
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>$50.00</p>
-        </div>
-
-        <div class="col-4">
-            <img src="{% static 'images/product-3.jpg' %}">
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>$50.00</p>
-        </div>
-
-        <div class="col-4">
-            <img src="{% static 'images/product-4.jpg' %}">
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>$50.00</p>
-        </div>
-
+      
+{% endfor %}
+{% endfor %}
     </div>
 </div>

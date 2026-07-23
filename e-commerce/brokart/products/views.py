@@ -20,11 +20,10 @@ def list_product(request):
 
 
 
-def product_details(request):
+def product_details(request, pk):
+    product=Product.objects.get(pk=pk)
     product_list=Product.objects.all()
-    context={
-        'products': product_list
-    }
+    context={'products':product,'product_list':product_list}
     
     return render(request, 'product_details.html',context)
 
